@@ -8,25 +8,7 @@ pipeline {
                     git url: 'https://github.com/Prakruthi0306/marketplace.git'
                 }
             }
-            stage('Build') {
-                steps {
-                    script {
-                        def mvnHome = tool 'MAVEN_HOME'
-                        bat "${mvnHome}\\bin\\mvn -B verify"
-                    }
-                }
-            }
-            
-            stage('Test') {
-                steps {
-                    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-                }
-            }
-            stage('Packaging') {
-                steps {
-                    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
-                }
-            }
+           
             
             stage ("Artifactory Publish"){
                 steps{
