@@ -5,7 +5,7 @@ pipeline {
         stages {
             stage('Source') {
                 steps {
-                    git url: 'https://github.com/Prakruthi0306/artifactory_pipeline.git'
+                    git url: 'https://github.com/Prakruthi0306/marketplace.git'
                 }
             }
             stage('Build') {
